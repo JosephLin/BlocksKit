@@ -173,7 +173,7 @@ static inline BOOL protocol_declaredSelector(Protocol *protocol, SEL selector)
 {
 	return [self.invocationsBySelectors bk_objectForSelector:selector] ||
 		   class_respondsToSelector(object_getClass(self), selector)   ||
-	       (protocol_declaredSelector(self.protocol, selector) && [self.realDelegate respondsToSelector:selector]);
+		   [self.realDelegate respondsToSelector:selector];
 }
 
 - (void)doesNotRecognizeSelector:(SEL)aSelector
